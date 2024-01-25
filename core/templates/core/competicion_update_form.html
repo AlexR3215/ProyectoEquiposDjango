@@ -1,0 +1,30 @@
+{% extends "core/base.html" %}
+
+{% block contenido %}
+  <div class="container mt-5">
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label for="{{ form.nombre.id_for_label }}" class="form-label">Nombre de la Competición:</label>
+        {{ form.nombre }}
+      </div>
+      <div class="mb-3">
+        <label for="{{ form.lugar.id_for_label }}" class="form-label">Lugar:</label>
+        {{ form.lugar }}
+      </div>
+      <div class="mb-3">
+        <label for="{{ form.foto.id_for_label }}" class="form-label">Foto:</label>
+        {{ form.foto }}
+      </div>
+      <div class="mb-3">
+        <label for="{{ form.fechaCreacion.id_for_label }}" class="form-label">Fecha de Creación:</label>
+        {{ form.fechaCreacion }}
+      </div>
+      <div class="mb-3">
+        <label for="{{ form.fechaModificacion.id_for_label }}" class="form-label">Fecha de Modificación:</label>
+        {{ form.fechaModificacion }}
+      </div>
+      <input type="submit" class="btn btn-primary" value="Crear">
+    </form>
+  </div>
+{% endblock %}

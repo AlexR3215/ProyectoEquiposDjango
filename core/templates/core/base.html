@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Competicion y Equipos V2</title>
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <div class="container-fluid">
+        <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Equipos</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{% url 'crear' %}">Crear equipo</a></li>
+                    <li><a class="dropdown-item" href="{% url 'listado' %}">Lista equipos</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Jugadores</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{% url 'crearJugador' %}">Crear jugador</a></li>
+                    <li><a class="dropdown-item" href="{% url 'listadoJugador' %}">Lista jugadores</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Competiciones</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{% url 'crearCompeticion' %}">Crear competición</a></li>
+                    <li><a class="dropdown-item" href="{% url 'listadoCompeticion' %}">Lista competiciones</a></li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="navbar-nav justify-content-end">
+            {% if request.user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link">{{ request.user }}</a>
+            </li>
+            <li class="nav-item">
+                <form action="{% url 'logout' %}" method="post">
+                    {% csrf_token %}
+                    <input type="submit" class="btn btn-danger" value="Logout">
+                </form>
+            </li>
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}">Entrar</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'registro' %}">Registrarse</a>
+            </li>
+            {% endif %}
+        </ul>
+      
+    </div>
+</nav>    
+
+{% block contenido %}
+{% endblock %}
+
+</body>
+</html>

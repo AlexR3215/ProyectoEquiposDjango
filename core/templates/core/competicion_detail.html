@@ -1,0 +1,23 @@
+{% extends "core/base.html"%}
+{% block contenido %}
+
+<div class="card" style="width: 18rem;">
+    {% if competicion.foto %}
+    <img class="card-img-top" src="{{ competicion.foto.url }}" alt="{{ competicion.nombre }}">
+    {% endif %}
+    <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><b>Nombre: </b>{{competicion.nombre}}</li>
+            <li class="list-group-item"><b>Edad: </b>{{competicion.lugar}}</li>   
+            <li class="list-group-item"><b>Equipos:</b></li>
+            <ul>
+                {% for equipo in competicion.equipos_set.all %}
+                <a href="{equipo.url}">
+                    <li>{{ equipo.nombre }}</li>
+                </a>
+                {% endfor %}
+            </ul> 
+          </ul>
+    </div>
+  </div>
+{% endblock %}

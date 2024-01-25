@@ -1,0 +1,18 @@
+{% extends "core/base.html" %}
+{% block contenido %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-10 text-center">
+            <form method="post">
+                {% csrf_token %}
+                <p>¿Seguro que quieres borrar el jugador {{jugador}}?</p>
+                {{ form }}
+                <input type="submit" value="confirmar" class="btn btn-primary">
+                <a href="{% url 'listadoJugador' %}" class="btn btn-secondary">Cancelar</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

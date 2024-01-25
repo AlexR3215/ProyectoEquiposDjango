@@ -1,0 +1,48 @@
+{% extends "core/base.html" %}
+
+{% block contenido %}
+  <div class="container">
+    <div class="row">
+      <div class="col-1"></div>
+      <div class="col-10">
+        {% for equipo in equipos_list %}
+          <div class="card mb-3" style="max-width: 1200px;">
+            <div class="row g-0">
+              <div class="col-4">
+                {% if equipo.foto %}
+                  <img src="{{ equipo.foto.url }}" class="img-fluid rounded-start" alt="imagen de {{ equipo.nombre }}">
+                {% endif %}
+              </div>
+              <div class="col-8">
+                <div class="card-body">
+                  <h5 class="card-title">{{ equipo.nombre }} (Creado por {{ equipo.responsable }})</h5>
+                  <p class="card-text">{{ equipo.categoria }}</p>
+                  
+                  <p class="card-text"><small class="text-muted">Creacion: {{ equipo.fechaCreacion }}</small></p>
+                  <p class="card-text"><small class="text-muted">Jugadores:</small></p>
+                  {% for jugador in equipo.jugador_set.all %}
+                    <p class="card-text"><small class="text-muted">{{ jugador.nombre }}</small></p>
+                  {% endfor %}
+
+                  {% if equipo.responsable == request.user %}
+                    <p class="card-text">
+                      <small class="text-muted">
+                        <a href="{% url 'borrar' equipo.id %}">borrar</a>
+                      </small>
+                    </p>
+                    <p class="card-text">
+                      <small class="text-muted">
+                        <a href="{% url 'modificar' equipo.id %}">modificar</a>
+                      </small>
+                    </p>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="col-1"></div>
+    </div>
+  </div>
+{% endblock %}
