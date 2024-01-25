@@ -1,12 +1,43 @@
-{% extends "core/base.html" %}
-{% block contenido %}
-<form action="" method="post">
-  {% csrf_token %}
-  <p><input type="text" name="username" required class="form-control" placeholder="Nombre de usuario"></p>
-  <p><input type="text" name="password" required class="form-control" placeholder="Contraseña"></p>
-  <br>
-  <div class="text-center">
-    <input type="submit" class="btn btn-secondary btn-block" value="login">
+{% extends "core/base.html" %} {% block contenido %}
+<div id="container">
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+      {% if registroOK in request.GET %}
+      <p style="color: rgb(29, 72, 123)">Usuario registrado correctamente</p>
+      {% endif %}
+
+      <form action="" method="post">
+        {% csrf_token %}
+        <p>
+          <input
+            type="text"
+            name="username"
+            required
+            class="form-control"
+            placeholder="Nombre de usuario"
+          />
+        </p>
+        <p>
+          <input
+            type="text"
+            name="password"
+            required
+            class="form-control"
+            placeholder="Contraseña"
+          />
+        </p>
+        <br />
+        <div class="text-center">
+          <input
+            type="submit"
+            class="btn btn-secondary btn-block"
+            value="login"
+          />
+        </div>
+      </form>
+    </div>
+    <div class="col-3"></div>
   </div>
-</form>
-{% endblock %}
+  {% endblock %}
+</div>
