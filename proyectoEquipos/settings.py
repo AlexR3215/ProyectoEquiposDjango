@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'core'
+    'core',
+    'contacto',
 ]
 
 MIDDLEWARE = [
@@ -134,3 +135,10 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 LOGIN_REDIRECT_URL = 'inicio'
 LOGOUT_REDIRECT_URL = 'inicio'
+
+#configuracion del correo
+
+EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
+EMAIL_HOST_USER = '410fe4b0011eb1'
+EMAIL_HOST_PASSWORD = '698ef0db5ff14f'
+EMAIL_PORT = '2525'

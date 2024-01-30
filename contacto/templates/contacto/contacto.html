@@ -1,0 +1,26 @@
+{% extends "core/base.html" %} {% block contenido %}
+<div class="container mt-3">
+  <div class="row">
+    <div class="col p-3 bg-secondary text-white text-center">
+      <h1>Contacto</h1>
+    </div>
+  </div>
+  {% if 'ok' in request.GET %}
+    <p><b>*Datos recibidos</b></p>
+    {% endif %}
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+      <form action="" method="POST">
+        {% csrf_token %}
+        <table>
+          {{ formulario.as_table}}
+        </table>
+        <input type="submit" value="Enviar">
+      </form>
+    </div>
+    <div class="col-3"></div>
+  </div>
+</div>
+
+{% endblock %}

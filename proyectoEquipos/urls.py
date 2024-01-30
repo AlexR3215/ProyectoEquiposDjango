@@ -6,4 +6,5 @@ urlpatterns = [
     path('accounts/', include('registration.urls')), #para el login
     path('admin/', admin.site.urls),
     path('', include('core.urls')),
+    path('contacto/',include('contacto.urls')),
 ]

@@ -37,6 +37,9 @@
             </li>
         </ul>
         <ul class="navbar-nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'contacto'%}">Contacto</a>
+            </li>
             {% if request.user.is_authenticated %}
             <li class="nav-item">
                 <a class="nav-link">{{ request.user }}</a>
